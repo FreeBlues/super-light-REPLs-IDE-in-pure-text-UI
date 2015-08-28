@@ -24,6 +24,9 @@
 
 技能要求: 需要使用者熟悉基本的 `vi` 操作, 熟悉一般的 `tmux` 操作.
 
+[本项目git.oschina.net仓库地址](https://git.oschina.net/hexblues/super-light-REPLs-IDE-in-pure-text-UI)		
+[本项目github.com仓库地址](https://github.com/freeblues/super-light-REPLs-IDE-in-pure-text-UI)
+
 ##  特性
 
 ###	优点:
