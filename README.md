@@ -26,7 +26,8 @@
 
 ##  特性
 
-优点:
+###	优点:
+
 - 方便
 - 超轻量级
 - 高度可定制
@@ -39,7 +40,8 @@
 - 支持任意拥有命令行 REPL 机制的语言
 - 支持快捷键从代码编辑区发送代码到REPL区进行调试
 
-缺点:
+###	缺点:
+
 - 跟 `Emacs` 下的 `Slime` 相比快捷键支持的调试命令比较少
 
 ##  实现原理
@@ -64,27 +66,35 @@
 
 分别建立 ~/.vim/bundle,  ~/.vim/autoload 目录
 
+```
   cd ~/.vim
   mkdir bundle
   mkdir autoload
+```
 
 把 pathogen.vim 文件下载到 autoload 目录下
 
+```
   cd ~/.vim/autoload
   wget https://tpo.pe/pathogen.vim
+```
 
 安装 `rainbow-parentheses` 和 `vim-slime` :
 
 进入 `~/.vim/bundle/` 目录, 克隆 `rainbow-parentheses` 和 `vim-slime` 即可, 剩余的 `pathogen` 会自动为你安装:
 
+```
   cd ~/.vim/bundle/
   git clone https://github.com/kien/rainbow_parentheses.vim
   git clone https://github.com/jpalardy/vim-slime
-  
+```
+ 
 安装 `vim-clojure-static`, 跟上面的步骤一样:
 
+```
   cd ~/.vim/bundle/
   git clone https://github.com/guns/vim-clojure-static   
+```
 
 接下来要对上述插件进行配置, 下面会详细介绍如何配置.
 
@@ -198,51 +208,60 @@ bind -r L resize-pane -R 5
 
 假设我们准备试验 `Common Lisp` 开发环境, 具体的实现是 `CLISP`.
 
-启动 `tmux`, 在当前窗口创建两个面板(`pane`), 快捷键为: `C-b c`, 也就是: `Ctrl-b c`;
-在 1 号面板里用 `vi` 编辑一个名为 `test.lisp` 的文件;
-在 2 号面板内启动一个 `REPL`, 例如: `clisp`. 
+*	启动 `tmux`, 在当前窗口创建两个面板(`pane`), 快捷键为: `C-b c`, 也就是: `Ctrl-b c`;		
+*	在 1 号面板里用 `vi` 编辑一个名为 `test.lisp` 的文件;
+*	在 2 号面板内启动一个 `REPL`, 例如: `clisp`. 		
 
 补充: `C-b q` 可以查看当前窗口所有面板的编号
 
 现在就可以进行 `Common Lisp` 代码调试了, 光标放在代码编辑区(切换面板的快捷键为 `C-b o`), 输入一段代码,如下:
 
+```
   (+ 123 245)
-  
+```
+
 光标保持在括号内, 进入 `vi` 命令模式, 输入快捷键 `C-c C-c`, 首次执行此命令, 会要求设定目标, 提示输入内容如下:
 
+```
   tmux socket name: default `回车`
   tmux target pane: `:2.2`    
-  
+```
+
 `:2` 表示 2 号窗口, `.2` 表示2号窗口的第2个面板
 
 这样就会把表达式 `(+ 123 245)` 发送到 2 号面板的 `REPL`, 马上就会被求值
 
 默认的快捷键绑定:
 
-  C-c C-c 把编辑区光标所在处的代码段落发送到 REPL 区
-  C-c v 重新设定发送目标, 需要按照提示输入:
-  tmux socket name: default `回车`
-  tmux target pane: `:2.2`
 
-":" 单独输入一个冒号表示当前窗口,当前面板, 这是合理的默认值;
-":i" 冒号跟一个数字 i 表示第 i 个窗口, 当前面板;
-":i.j" 冒号 数字i 小数点 数字 j 表示第 i 个窗口,第 j 个面板;
-"h:i.j" 如果前面再加一个 h, h 表示 `tmux` 的 `h` 号会话, `h` 可能是会话名,也可能是数字, 后面的含义不变.
+  	C-c C-c 把编辑区光标所在处的代码段落发送到 REPL 区		
+  	C-c v 重新设定发送目标, 需要按照提示输入:
+
+提示信息如下:		
+  	
+tmux socket name: default `回车`
+tmux target pane: `:2.2`
+
+
+>":" 单独输入一个冒号表示当前窗口,当前面板, 这是合理的默认值;		
+>":i" 冒号跟一个数字 i 表示第 i 个窗口, 当前面板;		
+>":i.j" 冒号 数字i 小数点 数字 j 表示第 i 个窗口,第 j 个面板;		
+>"h:i.j" 如果前面再加一个 h, h 表示 `tmux` 的 `h` 号会话, `h` 可能是会话名,也可能是数字, 后面的含义不变.
 
 ### 一些有用的快捷键
 
-`vim` 的快捷键(命令状态下输入):
+*	`vim` 的快捷键(命令状态下输入):
 
-`C-f 和 C-b` 向后或向前翻页
-`C-p 和 C-n` `vi`自带的简单自动补全
+`C-f 和 C-b` 向后或向前翻页		
+`C-p 和 C-n` `vi`自带的简单自动补全		
 
-`tmux`的快捷键:
+*	`tmux`的快捷键:
 
-`C-b r`   修改 `.tmux.conf` 文件后快速加载
-`C-b 数字`  跳转到数字对应窗口
-`C-b 空格键` 调整窗口的面板布局
-`C-b |` 或 `C-b "` 新建面板跟当前面板左右分布(水平分布)
-`C-b -` 或 `C-b %` 新建面板跟当前面板上下分布(垂直分布)
+`C-b r`   修改 `.tmux.conf` 文件后快速加载		
+`C-b 数字`  跳转到数字对应窗口		
+`C-b 空格键` 调整窗口的面板布局		
+`C-b |` 或 `C-b "` 新建面板跟当前面板左右分布(水平分布)		
+`C-b -` 或 `C-b %` 新建面板跟当前面板上下分布(垂直分布)		
 
 ##  其他信息
 
