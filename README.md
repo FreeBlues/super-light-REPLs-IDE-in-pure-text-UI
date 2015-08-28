@@ -53,11 +53,13 @@
 需要为 `vim` 按顺序依次安装如下插件:
 
 必需安装:
-[pathogen](https://github.com/tpope/vim-pathogen)
-[rainbow-parentheses](https://github.com/kien/rainbow_parentheses.vim)
+
+[pathogen](https://github.com/tpope/vim-pathogen)		
+[rainbow-parentheses](https://github.com/kien/rainbow_parentheses.vim)		
 [vim-slime](https://github.com/jpalardy/vim-slime)
 
 可选安装:
+
 [vim-clojure-static](https://github.com/guns/vim-clojure-static)
 
 安装 `pathogen`:
@@ -239,7 +241,7 @@ bind -r L resize-pane -R 5
 
 提示信息如下:		
   	
-tmux socket name: default `回车`
+tmux socket name: default `回车`		
 tmux target pane: `:2.2`
 
 
