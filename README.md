@@ -62,7 +62,7 @@
 
 [vim-clojure-static](https://github.com/guns/vim-clojure-static)
 
-安装 `pathogen`:
+###	安装 `pathogen`:
 
 首先为 `vim` 安装 `pathogen` 插件, 有了它可以超级简单地安装设置其他插件.
 
@@ -81,7 +81,7 @@
   wget https://tpo.pe/pathogen.vim
 ```
 
-安装 `rainbow-parentheses` 和 `vim-slime` :
+###	安装 `rainbow-parentheses` 和 `vim-slime` :
 
 进入 `~/.vim/bundle/` 目录, 克隆 `rainbow-parentheses` 和 `vim-slime` 即可, 剩余的 `pathogen` 会自动为你安装:
 
@@ -91,7 +91,9 @@
   git clone https://github.com/jpalardy/vim-slime
 ```
  
-安装 `vim-clojure-static`, 跟上面的步骤一样:
+###	安装 `vim-clojure-static`
+
+跟上面的步骤一样:
 
 ```
   cd ~/.vim/bundle/
